@@ -122,18 +122,15 @@ public class TelephoneBillCalculator implements ITelephoneBillCalculator {
     
     
     public Long FindMostFrequentNumber(String[] numbers) {
-        Arrays.sort(numbers); 
         // Convert the String array to Int array first
         Long[] iNumbers = new Long[numbers.length];
         for(int i = 0; i < numbers.length; i++) {
             iNumbers[i] = Long.parseLong(numbers[i]);
         }
-        // Create a Set so that numbers are unique for HashMap
-        Set<Long> uniqueNumbers = new HashSet<>(Arrays.asList(iNumbers));
         // Map our unique phoneNumbers to HashMap as keys
         HashMap<Long, Integer> numberFrequency = new HashMap<>();
         // Key is the number, value is starting as 0, since we are going to iterate over iNumbers anyway
-        for(var number : uniqueNumbers) {
+        for(var number : iNumbers) {
             numberFrequency.put(number, 0);
         }
         //Now we need to interate over iNumbers Array, foreach number in iNumber, 
